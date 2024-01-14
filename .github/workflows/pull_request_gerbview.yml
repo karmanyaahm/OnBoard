@@ -1,5 +1,5 @@
-name: Requisite Check
-run-name: Requisite Check
+name: Gerbview Comment
+run-name: Gerbview Comment
 on: 
     pull_request: 
         types: [opened]
@@ -14,4 +14,4 @@ jobs:
           uses: actions/checkout@v2
 
         - name: Testing
-          run: node .github/index.js
+          run: TOKEN="${{ secrets.GITHUB_TOKEN }}" node .github/index.js
