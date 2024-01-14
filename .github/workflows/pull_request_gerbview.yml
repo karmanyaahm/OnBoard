@@ -6,12 +6,12 @@ on:
         paths: 'projects/**'
 
 jobs:
-  Requisite-Check:
-    name: Check for files
+  echo-input:
     runs-on: ubuntu-latest
     steps:
-        - name: Check out
-          uses: actions/checkout@v2
-
-        - name: Testing
-          run: TOKEN="${{ secrets.GITHUB_TOKEN }}" node .github/index.js
+      - uses: actions/checkout@v3
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const script = require('./.github/index.js')
+            console.log(script({github, context}))
