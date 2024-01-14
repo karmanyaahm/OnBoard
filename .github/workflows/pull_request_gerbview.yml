@@ -2,7 +2,7 @@ name: Gerbview Comment
 run-name: Gerbview Comment
 on: 
     pull_request: 
-        types: [opened]
+        #types: [opened]
         paths: 'projects/**'
 
 jobs:
