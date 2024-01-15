@@ -3,7 +3,7 @@ async function run({github, context}) {
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 Thanks for reporting!'
+              body: '<!-- MY-ONBOARD-BOT --> 👋 Thanks for reporting!'
             })
 
             const cmts =  await github.rest.issues.listComments({
@@ -11,7 +11,7 @@ async function run({github, context}) {
               owner: context.repo.owner,
               repo: context.repo.repo,
 });
-            console.log(cmts           );
+            console.log(cmts );
             cmts.data.forEach((i) => {
 if (i.author_association == 'NONE') {
   console.log(i.user[0]);
