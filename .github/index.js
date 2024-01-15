@@ -5,10 +5,17 @@ async function run({ gh, ctx }) {
   context = ctx
 
 
-  let commit = context.
   let ourGerber = findGerber();
+  if (!ourGerber) {
+  comment(`Hi, I'm Orpheus Leap! Here to help you review your PR.
 
-  let URL = `https://tracespace.io/view/?boardUrl=https://raw.githubusercontent.com/hackclub/OnBoard/` + commit + "/" + ourGerber;
+  I can't find a gerber.zip, SMH
+
+  Happy OnBoarding!
+  ${new Date()}`);
+  }
+
+  let URL = `https://tracespace.io/view/?boardUrl=https://raw.githubusercontent.com/hackclub/OnBoard/` + currentCommitHash + "/" + ourGerber;
   comment(`Hi, I'm Orpheus Leap! Here to help you review your PR.
 
   You can view a 3D render of your board here: <${URL}>!
