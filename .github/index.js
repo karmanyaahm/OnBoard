@@ -14,7 +14,7 @@ async function run({ gh, ctx }) {
   Happy OnBoarding!
   ${new Date()}`);
 
-  return "done"
+    return "done"
   }
 
   let URL = `https://tracespace.io/view/?boardUrl=https://raw.githubusercontent.com/hackclub/OnBoard/` + (await currentCommitHash()) + "/" + ourGerber;
