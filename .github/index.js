@@ -12,7 +12,7 @@ async function run({github, context}) {
               repo: context.repo.repo,
 });
             console.log(cmts           );
-            cmts.data.foreach((i) => {
+            cmts.data.forEach((i) => {
 if (i.author_association == 'NONE') {
   console.log(i.user[0]);
   console.log(i.performed_via_github_app[0]);
