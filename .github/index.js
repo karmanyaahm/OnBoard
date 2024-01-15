@@ -7,7 +7,7 @@ async function run({github, context}) {
             })
 
             console.log(
- octokit.rest.issues.listComments({
+ github.rest.issues.listComments({
    issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
