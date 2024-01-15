@@ -13,6 +13,8 @@ async function run({ gh, ctx }) {
 
   Happy OnBoarding!
   ${new Date()}`);
+
+  return "done"
   }
 
   let URL = `https://tracespace.io/view/?boardUrl=https://raw.githubusercontent.com/hackclub/OnBoard/` + (await currentCommitHash()) + "/" + ourGerber;
@@ -27,7 +29,6 @@ async function run({ gh, ctx }) {
 
 async function findGerber() {
   let filesChanged = await gitDiffFiles();
-  console.log(filesChanged);
 
   for (let file of filesChanged) {
     if (file.filename.toLowerCase().includes("gerber") && file.toLowerCase().endsWith('zip')) {
@@ -78,17 +79,17 @@ async function already() {
 var execSync = require('child_process').execSync;
 
 async function gitDiffFiles() {
-return (await github.rest.pulls.listFiles({
+  return (await github.rest.pulls.listFiles({
     pull_number: context.issue.number,
     owner: context.repo.owner,
     repo: context.repo.repo,
-})).data;
- // console.log(context)
- // console.log(context)
- // console.log(await execSync('git log', { timeout: 3000, encoding: 'utf-8' }));
- // console.log(await execSync('git log | head -n 300', { timeout: 3000, encoding: 'utf-8' }));
- // const output = await execSync('git diff --name-only origin/' + process.env.GITHUB_BASE_REF, { timeout: 3000, encoding: 'utf-8' });
- // return output.split('\n')
+  })).data;
+  // console.log(context)
+  // console.log(context)
+  // console.log(await execSync('git log', { timeout: 3000, encoding: 'utf-8' }));
+  // console.log(await execSync('git log | head -n 300', { timeout: 3000, encoding: 'utf-8' }));
+  // const output = await execSync('git diff --name-only origin/' + process.env.GITHUB_BASE_REF, { timeout: 3000, encoding: 'utf-8' });
+  // return output.split('\n')
 }
 
 async function currentCommitHash() {
