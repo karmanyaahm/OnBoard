@@ -7,6 +7,7 @@ on:
 
 jobs:
   echo-input:
+    if: ${{ github.event.label.name == 'Submission' }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -16,4 +17,4 @@ jobs:
         with:
           script: |
             const script = require('./.github/index.js')
-            console.log(script({github, context}))
+            console.log(await script({github, context}))
