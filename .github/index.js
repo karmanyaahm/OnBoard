@@ -13,7 +13,8 @@ async function run({ gh, ctx }) {
 async function comment(body) {
 
  body = '<!-- MY-ONBOARD-BOT --> ' + body
- let id = await already();
+  let id = await already();
+  console.log(id);
   if (id === -1) {
     github.rest.issues.createComment({
       issue_number: context.issue.number,
@@ -41,9 +42,8 @@ async function already() {
     repo: context.repo.repo,
   });
   cmts.data.forEach((i) => {
-    console.log(i.body)
-    console.log(i.body.includes('MY-ONBOARD-BOT'))
     if (i.body.includes('MY-ONBOARD-BOT')) {
+      console.log("FOUND, returning ID: " + i.id)
       return i.id;
     }
   })
