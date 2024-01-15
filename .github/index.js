@@ -77,12 +77,13 @@ async function already() {
 var execSync = require('child_process').execSync;
 
 async function gitDiffFiles() {
-  const output = await execSync('git diff --name-only' + process.env.GITHUB_BASE_REF, { timeout: 3000, encoding: 'utf-8' });
+
+  console.log(context)
+  const output = await execSync('git diff --name-only ' + process.env.GITHUB_BASE_REF, { timeout: 3000, encoding: 'utf-8' });
   return output.split('\n')
 }
 
 async function currentCommitHash() {
-  console.log(context)
   return context.payload.after;
 }
 
