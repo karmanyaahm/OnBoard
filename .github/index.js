@@ -77,7 +77,7 @@ async function already() {
 var execSync = require('child_process').execSync;
 
 async function gitDiffFiles() {
-return octokit.rest.pulls.listFiles({
+return github.rest.pulls.listFiles({
     pull_number: context.issue.number,
     owner: context.repo.owner,
     repo: context.repo.repo,
