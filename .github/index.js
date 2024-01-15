@@ -74,7 +74,7 @@ async function already() {
   return -1;
 }
 
-var exec = require('child_process').execSync;
+var execSync = require('child_process').execSync;
 
 async function gitDiffFiles() {
   const output = await execSync('git diff ' + process.env.GITHUB_BASE_REF + ' --name-only', { timeout: 3 });
