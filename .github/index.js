@@ -1,4 +1,8 @@
-async function run({ github, context }) {
+var github = undefined
+var context = undefined
+async function run({ gh, ctx }) {
+  github = gh
+  context = ctx
 
   comment(`HIIIIIIIIIIIIII ${new Date()}`);
 
@@ -25,6 +29,7 @@ async function comment({body}) {
   }
 }
 
+// find an issue from us
 async function already() {
   const cmts = await github.rest.issues.listComments({
     issue_number: context.issue.number,

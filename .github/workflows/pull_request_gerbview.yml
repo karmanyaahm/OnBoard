@@ -17,4 +17,4 @@ jobs:
         with:
           script: |
             const script = require('./.github/index.js')
-            console.log(await script({github, context}))
+            console.log(await script({gh: github, ctx: context}))
