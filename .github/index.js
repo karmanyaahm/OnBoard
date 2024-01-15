@@ -21,6 +21,7 @@ async function run({ gh, ctx }) {
   comment(`Hi, I'm Orpheus Leap! Here to help you review your PR.
 
   You can view a 3D render of your board here: <${URL}>!
+
   Happy OnBoarding!
   ${new Date()}`);
 
@@ -33,7 +34,7 @@ async function findGerber() {
   for (let file of filesChanged) {
     let name = file.filename
     if (name.toLowerCase().includes("gerber") && name.toLowerCase().endsWith('zip')) {
-      return file.filename;
+      return name;
     }
   }
   return undefined;
@@ -61,36 +62,32 @@ async function comment(body) {
     })
     console.log(`Updating ${id} to ${body} on ${context.repo.owner}/${context.repo.repo}#${context.issue.number}`)
   }
+
+  // find an issue from us
+  async function already() {
+    const cmts = await github.rest.issues.listComments({
+      issue_number: context.issue.number,
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+    });
+    for (const i of cmts.data)
+      if (i.body.includes('MY-ONBOARD-BOT')) {
+        return i.id;
+      }
+    return -1;
+  }
 }
 
-// find an issue from us
-async function already() {
-  const cmts = await github.rest.issues.listComments({
-    issue_number: context.issue.number,
-    owner: context.repo.owner,
-    repo: context.repo.repo,
-  });
-  for (const i of cmts.data)
-    if (i.body.includes('MY-ONBOARD-BOT')) {
-      return i.id;
-    }
-  return -1;
-}
-
-var execSync = require('child_process').execSync;
-
+var gitdifffiles = null;
 async function gitDiffFiles() {
-  return (await github.rest.pulls.listFiles({
-    pull_number: context.issue.number,
-    owner: context.repo.owner,
-    repo: context.repo.repo,
-  })).data;
-  // console.log(context)
-  // console.log(context)
-  // console.log(await execSync('git log', { timeout: 3000, encoding: 'utf-8' }));
-  // console.log(await execSync('git log | head -n 300', { timeout: 3000, encoding: 'utf-8' }));
-  // const output = await execSync('git diff --name-only origin/' + process.env.GITHUB_BASE_REF, { timeout: 3000, encoding: 'utf-8' });
-  // return output.split('\n')
+  if (gitdifffiles === null)
+    gitdifffiles = (await github.rest.pulls.listFiles({
+      pull_number: context.issue.number,
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+    })).data;
+
+  return gitdifffiles;
 }
 
 async function currentCommitHash() {
