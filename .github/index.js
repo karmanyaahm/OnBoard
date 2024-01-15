@@ -79,6 +79,8 @@ var execSync = require('child_process').execSync;
 async function gitDiffFiles() {
 
   console.log(context)
+  console.log(context)
+  await execSync('git branch -v', { timeout: 3000, encoding: 'utf-8' });
   const output = await execSync('git diff --name-only ' + process.env.GITHUB_BASE_REF, { timeout: 3000, encoding: 'utf-8' });
   return output.split('\n')
 }
