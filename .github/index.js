@@ -6,6 +6,7 @@ async function run({ gh, ctx }) {
 
 
   console.log(context)
+  console.log(context.base[0])
   console.log(process.env)
   //comment(`HIIIIIIIIIIIIII ${new Date()}`);
 
