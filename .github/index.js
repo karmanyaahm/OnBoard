@@ -5,7 +5,7 @@ async function run({ gh, ctx }) {
   context = ctx
 
 
-  let ourGerber = findGerber();
+  let ourGerber = await findGerber();
   if (!ourGerber) {
   comment(`Hi, I'm Orpheus Leap! Here to help you review your PR.
 
