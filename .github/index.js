@@ -77,12 +77,11 @@ async function already() {
 var exec = require('child_process').exec;
 
 async function gitDiffFiles() {
-  const { stdout, stderr } = await exec('git diff ' + process.env.GITHUB_BASE_REF + ' --name-only');
-  if (stderr) {
-    console.log('git: ' + stderr)
-    console.log(stderr[0])
-    throw new Error('git ded: ' + stderr)
-
+  const { exitCode, stdout, stderr} = await exec('git diff ' + process.env.GITHUB_BASE_REF + ' --name-only', {timeout: 3});
+  if (exitCode !== 0) {
+      console.log(`stdout: ${stdout}`);
+  console.error(`stderr: ${stderr}`);
+    throw new Error('git ded: ' + exitCode +  stderr)
   }
   return stdout.split('\n')
 }
