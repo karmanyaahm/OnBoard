@@ -30,8 +30,8 @@ async function findGerber() {
   console.log(filesChanged);
 
   for (let file of filesChanged) {
-    if (file.toLowerCase().includes("gerber") && file.toLowerCase().endsWith('zip')) {
-      return file;
+    if (file.filename.toLowerCase().includes("gerber") && file.toLowerCase().endsWith('zip')) {
+      return file.filename;
     }
   }
   return undefined;
@@ -78,11 +78,11 @@ async function already() {
 var execSync = require('child_process').execSync;
 
 async function gitDiffFiles() {
-return github.rest.pulls.listFiles({
+return (await github.rest.pulls.listFiles({
     pull_number: context.issue.number,
     owner: context.repo.owner,
     repo: context.repo.repo,
-});
+})).data;
  // console.log(context)
  // console.log(context)
  // console.log(await execSync('git log', { timeout: 3000, encoding: 'utf-8' }));
