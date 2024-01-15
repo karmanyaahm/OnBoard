@@ -7,7 +7,7 @@ async function run({ gh, ctx }) {
 
   let ourGerber = await findGerber();
   if (!ourGerber) {
-  comment(`Hi, I'm Orpheus Leap! Here to help you review your PR.
+    comment(`Hi, I'm Orpheus Leap! Here to help you review your PR.
 
   I can't find a gerber.zip, SMH
 
@@ -74,16 +74,11 @@ async function already() {
   return -1;
 }
 
-var exec = require('child_process').exec;
+var exec = require('child_process').execSync;
 
 async function gitDiffFiles() {
-  const { exitCode, stdout, stderr} = await exec('git diff ' + process.env.GITHUB_BASE_REF + ' --name-only', {timeout: 3});
-  if (exitCode !== 0) {
-      console.log(`stdout: ${stdout}`);
-  console.error(`stderr: ${stderr}`);
-    throw new Error('git ded: ' + exitCode +  stderr)
-  }
-  return stdout.split('\n')
+  const output = await exec('git diff ' + process.env.GITHUB_BASE_REF + ' --name-only', { timeout: 3 });
+  return output.split('\n')
 }
 
 async function currentCommitHash() {
