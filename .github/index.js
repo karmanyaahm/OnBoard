@@ -10,9 +10,9 @@ async function run({ gh, ctx }) {
 }
 
 // make or update comment with `body` markdown
-async function comment({body}) {
+async function comment(body) {
  let id = await already();
-  if (already() === -1) {
+  if (id === -1) {
     github.rest.issues.createComment({
       issue_number: context.issue.number,
       owner: context.repo.owner,
