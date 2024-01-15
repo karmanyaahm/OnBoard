@@ -6,13 +6,19 @@ async function run({github, context}) {
               body: '👋 Thanks for reporting!'
             })
 
-            console.log(
- await github.rest.issues.listComments({
+            const cmts =  await github.rest.issues.listComments({
    issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-})
-            )
+});
+            console.log(cmts           );
+            cmts.data.foreach((i) => {
+if (i.author_association == 'NONE') {
+  console.log(i.user[0]);
+  console.log(i.performed_via_github_app[0]);
+  console.log(i.id);
+}
+            })
             return "cool"
 }
 
