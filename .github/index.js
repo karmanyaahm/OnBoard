@@ -12,9 +12,8 @@ async function run({ gh, ctx }) {
 // make or update comment with `body` markdown
 async function comment(body) {
 
- body = '<!-- MY-ONBOARD-BOT --> ' + body
+  body = '<!-- MY-ONBOARD-BOT --> ' + body
   let id = await already();
-  console.log(id);
   if (id === -1) {
     github.rest.issues.createComment({
       issue_number: context.issue.number,
@@ -24,7 +23,7 @@ async function comment(body) {
     })
     console.log(`Creating new comment with ${body} on ${context.repo.owner}/${context.repo.repo}#${context.issue.number}`)
   } else {
-     github.rest.issues.updateComment({
+    github.rest.issues.updateComment({
       comment_id: id,
       owner: context.repo.owner,
       repo: context.repo.repo,
@@ -41,12 +40,10 @@ async function already() {
     owner: context.repo.owner,
     repo: context.repo.repo,
   });
-  cmts.data.forEach((i) => {
+  for (const i of cmts.data)
     if (i.body.includes('MY-ONBOARD-BOT')) {
-      console.log("FOUND, returning ID: " + i.id)
       return i.id;
     }
-  })
   return -1;
 }
 
