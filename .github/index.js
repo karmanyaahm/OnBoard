@@ -27,6 +27,7 @@ async function run({ gh, ctx }) {
 
 async function findGerber() {
   let filesChanged = await gitDiffFiles();
+  console.log(filesChanged);
 
   for (let file of filesChanged) {
     if (file.toLowerCase().includes("gerber") && file.toLowerCase().endsWith('zip')) {
