@@ -5,12 +5,28 @@ async function run({ gh, ctx }) {
   context = ctx
 
 
-  console.log(context)
-  console.log(context.base[0])
-  console.log(process.env)
-  //comment(`HIIIIIIIIIIIIII ${new Date()}`);
+  let commit = context.
+  let ourGerber = findGerber();
+
+  let URL = `https://tracespace.io/view/?boardUrl=https://raw.githubusercontent.com/hackclub/OnBoard/` + commit + "/" + ourGerber;
+  comment(`Hi, I'm Orpheus Leap! Here to help you review your PR.
+
+  You can view a 3D render of your board here: <${URL}>!
+  Happy OnBoarding!
+  ${new Date()}`);
 
   return "cool"
+}
+
+async function findGerber() {
+  let filesChanged = await gitDiffFiles();
+
+  for (let file of filesChanged) {
+    if (file.toLowerCase().includes("gerber") && file.toLowerCase().endsWith('zip')) {
+      return file;
+    }
+  }
+  return undefined;
 }
 
 // make or update comment with `body` markdown
@@ -53,11 +69,16 @@ async function already() {
 
 var exec = require('child_process').exec;
 
-async function gitDiffBranchFiles(branch) {
-  const { stdout, stderr } = await exec('git diff ' + branch + ' --file');
-  console.log('stdout:', stdout);
-  console.error('stderr:', stderr);
+async function gitDiffFiles() {
+  const { stdout, stderr } = await exec('git diff ' + process.env.GITHUB_BASE_REF + ' --name-only');
+  if (stderr) {
+    throw new Error('git ded: ' + stderr)
+  }
+  return stdout.split('\n')
 }
 
+async function currentCommitHash() {
+  return context.payload.after;
+}
 
 module.exports = run
