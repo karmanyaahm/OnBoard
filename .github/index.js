@@ -4,7 +4,10 @@ async function run({ gh, ctx }) {
   github = gh
   context = ctx
 
-  comment(`HIIIIIIIIIIIIII ${new Date()}`);
+
+  console.log(context)
+  console.log(process.env)
+  //comment(`HIIIIIIIIIIIIII ${new Date()}`);
 
   return "cool"
 }
@@ -46,5 +49,14 @@ async function already() {
     }
   return -1;
 }
+
+var exec = require('child_process').exec;
+
+async function gitDiffBranchFiles(branch) {
+  const { stdout, stderr } = await exec('git diff ' + branch + ' --file');
+  console.log('stdout:', stdout);
+  console.error('stderr:', stderr);
+}
+
 
 module.exports = run
