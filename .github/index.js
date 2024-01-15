@@ -41,6 +41,7 @@ async function already() {
     repo: context.repo.repo,
   });
   cmts.data.forEach((i) => {
+    console.log(i.body)
     if (i.body.includes('MY-ONBOARD-BOT')) {
       return i.id;
     }
