@@ -42,6 +42,7 @@ async function already() {
   });
   cmts.data.forEach((i) => {
     console.log(i.body)
+    console.log(i.body.includes('MY-ONBOARD-BOT'))
     if (i.body.includes('MY-ONBOARD-BOT')) {
       return i.id;
     }
