@@ -18,7 +18,7 @@ async function run({ gh, ctx }) {
   let URL = `https://tracespace.io/view/?boardUrl=https://raw.githubusercontent.com/hackclub/OnBoard/` + (await currentCommitHash()) + "/" + ourGerber;
   comment(`Hi, I'm Orpheus Leap! Here to help you review your PR.
 
-  You can view a render of your board over on [tracespace.io](${URL})!
+  You can view a render of your board over on [tracespace.io](<${URL}>)!
 
   Happy OnBoarding!`);
 
