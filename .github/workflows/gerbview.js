@@ -4,7 +4,6 @@ async function run({ gh, ctx }) {
   github = gh
   context = ctx
 
-
   let ourGerber = await findGerber();
   if (!ourGerber) {
     comment(`Hi, I'm Orpheus Leap! Here to help you review your PR.

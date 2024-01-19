@@ -5,7 +5,6 @@ on:
         types: [synchronize, labeled]
         paths: 'projects/**'
 
-
 jobs:
   echo-input:
     if: ${{ github.event.label.name == 'Submission' || github.event.label.name == 'PCB' }}
