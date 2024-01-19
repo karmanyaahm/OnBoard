@@ -2,12 +2,13 @@ name: Gerbview Comment
 run-name: Gerbview Comment
 on: 
     pull_request: 
-        #types: [opened]
+        types: [synchronize, labeled]
         paths: 'projects/**'
+
 
 jobs:
   echo-input:
-    #if: ${{ github.event.label.name == 'Submission' }}
+    if: ${{ github.event.label.name == 'Submission' }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
