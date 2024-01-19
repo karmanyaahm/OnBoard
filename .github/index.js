@@ -11,8 +11,7 @@ async function run({ gh, ctx }) {
 
   Cannot find a Gerber File
 
-  Happy OnBoarding!
-  ${new Date()}`);
+  Happy OnBoarding!`);
 
     return "done"
   }
@@ -22,8 +21,7 @@ async function run({ gh, ctx }) {
 
   You can view a render of your board here: <${URL}>!
 
-  Happy OnBoarding!
-  ${new Date()}`);
+  Happy OnBoarding!`);
 
   return "cool"
 }
