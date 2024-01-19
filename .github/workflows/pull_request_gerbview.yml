@@ -8,7 +8,7 @@ on:
 
 jobs:
   echo-input:
-    if: ${{ github.event.label.name == 'Submission' }}
+    if: ${{ github.event.label.name == 'Submission' || github.event.label.name == 'PCB' }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
