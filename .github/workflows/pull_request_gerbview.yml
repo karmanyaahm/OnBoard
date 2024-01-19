@@ -7,7 +7,8 @@ on:
 
 jobs:
   echo-input:
-    if: ${{ github.event.label.name == 'Submission' || github.event.label.name == 'PCB' }}
+    #if: contains(github.event.pull_request.labels.*.name, 'Submission') || contains(github.event.pull_request.labels.*.name, 'PCB')
+    # don't need this condition, because gets called on.pull_request.paths == 'projects/**' above. Leaving for posterity.
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
