@@ -17,5 +17,5 @@ jobs:
         with:
           github-token: ${{ secrets.ORPHEUS_PAT || secrets.GITHUB_TOKEN }}
           script: |
-            const script = require('./.github/index.js')
+            const script = require('./.github/workflows/gerbview.js')
             console.log(await script({gh: github, ctx: context}))
