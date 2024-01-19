@@ -9,7 +9,7 @@ async function run({ gh, ctx }) {
   if (!ourGerber) {
     comment(`Hi, I'm Orpheus Leap! Here to help you review your PR.
 
-  I can't find a gerber.zip, SMH
+  Cannot find a Gerber File
 
   Happy OnBoarding!
   ${new Date()}`);
@@ -20,7 +20,7 @@ async function run({ gh, ctx }) {
   let URL = `https://tracespace.io/view/?boardUrl=https://raw.githubusercontent.com/hackclub/OnBoard/` + (await currentCommitHash()) + "/" + ourGerber;
   comment(`Hi, I'm Orpheus Leap! Here to help you review your PR.
 
-  You can view a 3D render of your board here: <${URL}>!
+  You can view a render of your board here: <${URL}>!
 
   Happy OnBoarding!
   ${new Date()}`);
