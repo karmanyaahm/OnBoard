@@ -16,3 +16,4 @@ $9.35 including shipping and tax
 
 <!-- Tell us a little bit about your design process. What were some challenges? What helped? ***Totally optional*** -->
 This was my first PCB that I designed and I used Kicad to design it. Digikey's kicad tutorial series helped me understand how Kicad worked.
+ 
