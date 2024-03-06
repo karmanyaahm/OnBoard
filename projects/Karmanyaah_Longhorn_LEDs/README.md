@@ -43,4 +43,4 @@ PCB:
 Schematic:
 ![](./img/longhorn_leds.svg)
 ![](./img/longhorn_leds-DEVICES_PAGE.svg)
-![](./img/longhorn_leds-DEVICES_PAGE-LED-stick0.svg)
+![](./img/longhorn_leds-DEVICES_PAGE-LED-stick0.svg) 
