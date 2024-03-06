@@ -23,3 +23,4 @@ I enjoy working my way through problems on my own. I find I learn the most and I
 However, I was challenged quite often. I had issues converting the textbook knowledge into practical knowledge. Not only that, but I made a lot of mistakes.
 This is mainly due to the fact that neither my teachers nor my father had ever used EasyEDA, let alone designed a PCB. This was my first time, and I rather enjoyed it. 
 Even all of the infuriating mistakes, as in the end I learned just a little bit more.
+ 
