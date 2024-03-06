@@ -12,3 +12,4 @@ github_handle: "@Connor 2648"
 #### The boards will cost almost $9, and I am buying parts to make multiple if I make a mistake in soldering, or in design. Those parts all cost around $15-20.
 ## Tell us a little bit about your design process. What were some challenges? What helped?
 #### This was an interesting challenge for me as it is the first board I have designed fully by myself. The rest of them I have had a mentor on my FRC team help me with it. This board has been a fun challenge from finding the best parts in terms of cost, and usability, and just general design. Some of the hardest things was trying to find what all pins I would need on the output, or what to use to sense the bed. 
+ 
